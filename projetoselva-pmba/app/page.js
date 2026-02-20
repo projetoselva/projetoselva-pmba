@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { BookOpen, Target, TrendingUp, Users, CheckCircle, ArrowRight } from 'lucide-react'
+import { BookOpen, Target, TrendingUp, Users, CheckCircle, ArrowRight, Scale, GitCompare } from 'lucide-react'
 
 export default function Home() {
   return (
@@ -14,6 +14,10 @@ export default function Home() {
             <span className="text-xl font-bold text-gray-800">@projetoselva</span>
           </div>
           <div className="flex gap-3">
+            <Link href="/jurisprudencia" className="flex items-center gap-1.5 text-sm font-medium text-emerald-700 bg-emerald-50 hover:bg-emerald-100 border border-emerald-200 px-3 py-2 rounded-lg transition-all">
+              <Scale className="w-4 h-4" />
+              Jurisprudência
+            </Link>
             <Link href="/auth/login" className="btn-secondary">
               Entrar
             </Link>
@@ -72,7 +76,7 @@ export default function Home() {
             Ferramentas desenvolvidas especificamente para o concurso PMBA 2025
           </p>
           
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             <div className="card p-6">
               <div className="w-12 h-12 bg-emerald-100 rounded-xl flex items-center justify-center mb-4">
                 <CheckCircle className="w-6 h-6 text-emerald-600" />
@@ -82,7 +86,7 @@ export default function Home() {
                 Todos os 131 tópicos organizados por disciplina. Marque o que já estudou e acompanhe seu progresso.
               </p>
             </div>
-            
+
             <div className="card p-6">
               <div className="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center mb-4">
                 <Target className="w-6 h-6 text-blue-600" />
@@ -92,7 +96,7 @@ export default function Home() {
                 Registre acertos e erros por tópico. Saiba exatamente onde precisa melhorar.
               </p>
             </div>
-            
+
             <div className="card p-6">
               <div className="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center mb-4">
                 <TrendingUp className="w-6 h-6 text-purple-600" />
@@ -102,6 +106,19 @@ export default function Home() {
                 Visualize seu desempenho ao longo do tempo com gráficos interativos.
               </p>
             </div>
+
+            <Link href="/jurisprudencia" className="card p-6 hover:border-emerald-500 hover:shadow-md transition-all group">
+              <div className="w-12 h-12 bg-orange-100 rounded-xl flex items-center justify-center mb-4 group-hover:bg-orange-200 transition-colors">
+                <Scale className="w-6 h-6 text-orange-600" />
+              </div>
+              <h3 className="text-xl font-bold text-gray-800 mb-2">Jurisprudência TJBA</h3>
+              <p className="text-gray-500 mb-3">
+                Busque decisões reais do TJBA sobre mandados de segurança envolvendo a PMBA (2020–2026).
+              </p>
+              <div className="flex items-center gap-1 text-orange-600 text-sm font-medium">
+                Acessar buscador <ArrowRight className="w-4 h-4" />
+              </div>
+            </Link>
           </div>
         </div>
       </section>
