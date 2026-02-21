@@ -5,90 +5,128 @@
 /* Fontes */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
+/* ─── CSS Variables (shadcn/ui) ─────────────────────────────── */
+:root {
+  --background: 214 32% 96%;
+  --foreground: 222.2 84% 4.9%;
+  --card: 214 15% 96%;
+  --card-foreground: 222.2 84% 4.9%;
+  --popover: 210 17% 98%;
+  --popover-foreground: 222.2 84% 4.9%;
+  --primary: 221.2 83.2% 40%;
+  --primary-foreground: 210 40% 98%;
+  --secondary: 210 40% 96.1%;
+  --secondary-foreground: 222.2 47.4% 11.2%;
+  --muted: 210 40% 96.1%;
+  --muted-foreground: 215.4 16.3% 46.9%;
+  --accent: 210 40% 96.1%;
+  --accent-foreground: 222.2 47.4% 11.2%;
+  --destructive: 0 84.2% 60.2%;
+  --destructive-foreground: 210 40% 98%;
+  --border: 214.3 31.8% 91.4%;
+  --input: 214.3 31.8% 91.4%;
+  --ring: 221.2 83.2% 40%;
+  --radius: 0.5rem;
+}
+
+.dark {
+  --background: 222.2 84% 4.9%;
+  --foreground: 210 40% 98%;
+  --card: 222.2 84% 4.9%;
+  --card-foreground: 210 40% 98%;
+  --popover: 222.2 84% 4.9%;
+  --popover-foreground: 210 40% 98%;
+  --primary: 217.2 91.2% 59.8%;
+  --primary-foreground: 222.2 47.4% 11.2%;
+  --secondary: 217.2 32.6% 17.5%;
+  --secondary-foreground: 210 40% 98%;
+  --muted: 217.2 32.6% 17.5%;
+  --muted-foreground: 215 20.2% 65.1%;
+  --accent: 217.2 32.6% 17.5%;
+  --accent-foreground: 210 40% 98%;
+  --destructive: 0 62.8% 30.6%;
+  --destructive-foreground: 210 40% 98%;
+  --border: 217.2 32.6% 17.5%;
+  --input: 217.2 32.6% 17.5%;
+  --ring: 224.3 76.3% 48%;
+}
+
+/* ─── Base ──────────────────────────────────────────────────── */
 body {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+  background-color: hsl(var(--background));
+  color: hsl(var(--foreground));
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-/* Scrollbar customizada */
+/* ─── Scrollbar ─────────────────────────────────────────────── */
 ::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
+  width: 6px;
+  height: 6px;
 }
-
 ::-webkit-scrollbar-track {
-  background: #f1f1f1;
-  border-radius: 4px;
+  background-color: transparent;
 }
-
 ::-webkit-scrollbar-thumb {
-  background: #10b981;
-  border-radius: 4px;
+  background-color: hsl(var(--muted-foreground) / 0.2);
+  border-radius: 9999px;
 }
-
 ::-webkit-scrollbar-thumb:hover {
-  background: #059669;
+  background-color: hsl(var(--muted-foreground) / 0.35);
 }
 
-/* Animações */
+/* ─── Animações ─────────────────────────────────────────────── */
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
+  to   { opacity: 1; transform: translateY(0); }
 }
-
 .animate-fade-in {
   animation: fadeIn 0.3s ease-out;
 }
 
 @keyframes pulse-green {
   0%, 100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.4); }
-  50% { box-shadow: 0 0 0 8px rgba(16, 185, 129, 0); }
+  50%       { box-shadow: 0 0 0 8px rgba(16, 185, 129, 0); }
 }
-
 .pulse-green {
   animation: pulse-green 2s infinite;
 }
 
-/* Componentes customizados */
+/* ─── Componentes customizados ──────────────────────────────── */
 @layer components {
   .btn-primary {
     @apply bg-emerald-500 hover:bg-emerald-600 text-white font-medium py-2 px-4 rounded-lg transition-all duration-200 shadow-sm hover:shadow-md;
   }
-  
   .btn-secondary {
     @apply bg-white hover:bg-gray-50 text-gray-700 font-medium py-2 px-4 rounded-lg border border-gray-200 transition-all duration-200;
   }
-  
   .btn-danger {
     @apply bg-red-500 hover:bg-red-600 text-white font-medium py-2 px-4 rounded-lg transition-all duration-200;
   }
-  
   .card {
     @apply bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden;
   }
-  
   .input-field {
     @apply w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 outline-none transition-all;
   }
-  
   .stat-card {
     @apply bg-white rounded-xl p-4 shadow-sm border border-gray-100;
   }
-  
   .progress-bar {
     @apply h-2 bg-gray-100 rounded-full overflow-hidden;
   }
-  
   .progress-bar-fill {
     @apply h-full bg-emerald-500 rounded-full transition-all duration-500;
   }
 }
 
-/* Estados de loading */
+/* ─── Skeleton ──────────────────────────────────────────────── */
 .skeleton {
   @apply bg-gray-200 animate-pulse rounded;
 }
 
-/* Responsividade para tabelas */
+/* ─── Tabelas responsivas ───────────────────────────────────── */
 @media (max-width: 768px) {
   .table-responsive {
     display: block;
